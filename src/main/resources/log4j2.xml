@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG"
+	packages="com.sumojsonpackage">
+
+	<Appenders>
+		<Console name="ConsoleJSONAppender" target="SYSTEM_OUT">
+			<!-- <JsonLayout complete="false" compact="false"> <KeyValuePair key="timestamp" 
+				value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}" /> </JsonLayout> -->
+
+			<CustomJsonLayout>
+				<KeyValuePair key="timestamp"
+					value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}" />
+			</CustomJsonLayout>
+
+		</Console>
+		<File name="FileJSONAppender" fileName="logs/app.log">
+			<!-- <JsonLayout complete="false" compact="false"> <KeyValuePair key="myCustomField" 
+				value="myCustomValue" /> <KeyValuePair key="timestamp" value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}" 
+				/> </JsonLayout> -->
+
+			<CustomJsonLayout>
+				<KeyValuePair key="timestamp"
+					value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}" />
+			</CustomJsonLayout>
+		</File>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="com.log4jDemo" level="TRACE" additivity="false">
+			<AppenderRef ref="ConsoleJSONAppender" />
+			<AppenderRef ref="FileJSONAppender" />
+		</Logger>
+		<Logger name="org.springframework.boot" level="error"
+			additivity="false">
+			<AppenderRef ref="ConsoleJSONAppender" />
+		</Logger>
+		<Root level="error">
+			<AppenderRef ref="ConsoleJSONAppender" />
+			<AppenderRef ref="FileJSONAppender" />
+		</Root>
+	</Loggers>
+
+
+
+
+	<!-- <Appenders> <Console name="LogToConsole" target="SYSTEM_OUT"> <PatternLayout 
+		pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/> </Console> 
+		<File name="LogToFile" fileName="logs/app.log"> <PatternLayout> <Pattern>%d 
+		%p %c{1.} [%t] %m%n</Pattern> </PatternLayout> </File> </Appenders> <Loggers> 
+		<Logger name="com.log4jDemo" level="debug" additivity="false"> <AppenderRef 
+		ref="LogToFile"/> <AppenderRef ref="LogToConsole"/> </Logger> <Logger name="org.springframework.boot" 
+		level="error" additivity="false"> <AppenderRef ref="LogToConsole"/> </Logger> 
+		<Root level="error"> <AppenderRef ref="LogToFile"/> <AppenderRef ref="LogToConsole"/> 
+		</Root> </Loggers> -->
+
+
+
+
+
+</Configuration>
